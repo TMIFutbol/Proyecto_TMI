@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>TOUR ESTADIOS ESPAÑA
+</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="http://www.google.com/jsapi?key=AIzaSyAqdK6h5wH_C_iDLhLgJmibOljTOC_5H1E"></script>
+  <script type="text/javascript">
+  
+ 
+  var ge;
+  var la;
+  var latitude;
+  var longitude;
+  var heading;
+  var buildings;
+  var turning;
+  var frameendEL;
+  var kmzs;
+  var nls;
+  google.load("earth", "1");
+
+  function init() {
+    google.earth.createInstance('map3d', initCB, failureCB);
+  }
+  
+  function initCB(instance) {
+      ge = instance;
+    ge.getWindow().setVisibility(true);
+  
+    frameendEL = false;
+    buildings = false;
+  
+   
+    toggleBuildings();
+    ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);
+    
+    ge.getLayerRoot().enableLayerById(ge.LAYER_BORDERS, true);
+    ge.getLayerRoot().enableLayerById(ge.LAYER_ROADS, true);
+    ge.getLayerRoot().enableLayerById(ge.LAYER_TERRAIN,true);
+
+    la = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
+    var win = ge.getWindow();
+    window.google.earth.addEventListener(win, 'mousedown',stopFly);
+
+
+
+    
+
+  }
+  function toggleBuildings(){
+  if (!buildings)
+  {
+  buildings = true;
+  //toggleVisibilityNLs(false);
+  ge.getLayerRoot().enableLayerById(ge.LAYER_BUILDINGS, buildings);
+
+  }
+  else
+  {
+  buildings = false;
+  toggleVisibilityNLs(true);
+  ge.getLayerRoot().enableLayerById(ge.LAYER_BUILDINGS, buildings);
+  }
+  }
+    function loadKmz(kmzFile){
+  
+  var networkLink = ge.createNetworkLink("");
+  networkLink.setName("Opened KMZ File");
+networkLink.setFlyToView(false);  
+var link = ge.createLink("");
+link.setHref(kmzFile);
+networkLink.setLink(link);
+networkLink.setVisibility(true);
+ge.getFeatures().appendChild(networkLink);
+nls.push(networkLink);
+
+
+
+return networkLink;
+  }
+  function toggleVisibilityNLs(visibility){
+  var nl;
+  for (var x=0; x<6; x+=1){
+  
+  nls[x].setVisibility(visibility);
+  
+  }
+  
+  }
+
+  function failureCB() {
+  }
+  function createPlacemark(lat,lng){
+  var placemark = ge.createPlacemark('');
+  var point = ge.createPoint('');
+  point.setLatitude(lat);
+  point.setLongitude(lng);
+  placemark.setGeometry(point);
+  ge.getFeatures().appendChild(placemark);
+  }
+  function za(lat,lng,head,range,altitude,tilt){
+    turning = false;
+    latitude = lat;
+    longitude = lng;
+    heading = head;
+    la.set(lat,lng,0,ge.ALTITUDE_RELATIVE_TO_GROUND,heading,tilt,range);
+    if (!frameendEL){
+    toggleFrameendEL();
+    }
+    ge.getOptions().setFlyToSpeed(.25);
+    ge.getView().setAbstractView(la);
+    turning = false;
+    
+    }
+  
+  function toggleFrameendEL(){
+  if (!frameendEL){
+  window.google.earth.addEventListener(ge, 'frameend', zoomAround);
+  frameendEL = true;
+  }else{
+  google.earth.removeEventListener(ge, 'frameend', zoomAround);
+  frameendEL = false;
+  }
+  
+  }
+  function zoomAround(){
+              
+    latemp = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
+    
+    if ((latemp.getLatitude().toFixed(4) == latitude.toFixed(4) && latemp.getLongitude().toFixed(4) == longitude.toFixed(4))|turning){
+    turn();
+    turning = true;
+   
+    }
+     
+
+  }
+  
+  function turn(){
+   ge.getOptions().setFlyToSpeed(1000);
+    heading+=.5;
+    if (heading > 360){
+    heading -= 360;}   
+
+    la.setHeading(heading);
+    la.setLatitude(latitude);
+    la.setLongitude(longitude);
+    ge.getView().setAbstractView(la);    
+  }
+ 
+  function buttonClick(lat,lng,head,range,altitude,tilt) {
+    za(lat,lng,head,range,altitude,tilt);
+  }
+  function stopFly() {
+    if(frameendEL){
+      toggleFrameendEL();
+    }
+    ge.getOptions().setFlyToSpeed(1);
+    turning = false;
+  }
+  </script>
+
+<link href="diseño.css" rel="stylesheet" type="text/css" /> 
+</head>
+  <body onload='init()' id='body' background="fondo3.jpg"><h1>BIENVENIDOS AL TOUR DE LOS MEJORES ESTADIOS DE ESPAÑA	</h1>
+    <table width='725px' cellspacing='6'>
+    <tr>
+      <td valign=top>
+      <div id='map3d' style='border: 1px solid silver; height: 500px; width: 725px;'></div>
+      </td>
+      <td>      <img src="http://cde.peru21.pe/ima/0/0/2/7/2/272474.jpg" onmouseover="this.src='http://www.pasionlibertadores.com/__export/1405971953000/sites/pasionlibertadores/img/2014/07/21/10-equipos-valiosos-mundo1.jpg_787813774.jpg';" onmouseout="this.src='http://cde.peru21.pe/ima/0/0/2/7/2/272474.jpg';"/>
+        <center>
+          <p>
+          <form method="get" action="chatbot.html">
+<input type="submit" value="Hablemos de Futbol Español" />
+</form><p>&nbsp;</p>
+        </center>
+<audio id="Himno1" src="HimnoRealMadrid.mp3"></audio>
+<audio id="Himno2" src="Himno-FC-Barcelona.mp3"></audio>
+<div align="right">
+  </button>
+  <button onclick="document.getElementById('Himno1').pause()" onclick="document.getElementById('Himno2').pause()">Pausar el Audio</button>
+  <button onclick="document.getElementById('Himno1').volume+=0.1">Aumentar el Volumen</button>
+  <button onclick="document.getElementById('Himno1').volume-=0.1">Disminuir el Volumen</button>
+</div>
+        
+      <p>&nbsp;</p></td>
+   </tr>
+    <tr align=center>
+	 <td valign=top>     
+     
+<form method="POST">
+<fieldset style="background-color:#6C0">
+<legend style="background:#FFF" align="right">ELIGE UN ESTADIO</legend>
+<table>
+<tr>
+  <td width="304"><strong>Los Mejores Estadios de España</strong></td>
+  <td width="34"><strong></strong></td>
+</tr>
+ 
+<tr>
+  <td align="left">Estadio Santiago Bernabeu-REAL MADRID</td>
+  <td><center><input type="radio" name="1" onclick="buttonClick(40.453054,-3.688344,143.605,300,20.86364761834882,65)(document.getElementById('Himno1').play())"/></center></td>
+</tr>
+ 
+<tr>
+  <td>Estadio Camp Nou-BARCELONA</td>
+  <td><center><input type="radio" name="1" onclick="buttonClick(41.380896,2.122820,0,250,0,65)(document.getElementById('Himno2').play())"/></center></td>
+</tr>
+ 
+<tr>
+  <td>Dreamweaver</td>
+  <td>60</td>
+</tr>
+</table>
+</fieldset>
+
+
+<select name="estadio" size="1">
+       <option selected id="0"> Elige una opción </option>
+       <option value="1"><input type="button" onclick="buttonClick(40.453054,-3.688344,143.605,300,20.86364761834882,65)" value="Estadio Santiago Bernabeu-REAL MADRID"/></option>
+<option value="2"><input type="text" onclick="buttonClick(41.380896,2.122820,0,250,0,65)" value="Estadio Camp Nou-BARCELONA"/></input></option>
+       <option value="3"> Tercera </option>
+        <option value="4"> Cuarta </option>
+    </select>
+</form>
+
+      <input type="button" onclick="buttonClick(40.453054,-3.688344,143.605,300,20.86364761834882,65)" value="Estadio Santiago Bernabeu-REAL MADRID"/>
+      <input type="button" onclick="buttonClick(41.380896,2.122820,0,250,0,65)" value="Estadio Camp Nou-BARCELONA"/>
+      <input type="button" onclick="buttonClick(40.401724,-3.720635,143.605,300,20.86364761834882,65)" value="Estadio Vicente Calderón-ATLETICO MADRID"/>
+      <input type="button" onclick="buttonClick(37.384066,-5.970690,0,250,0,65)" value="Estadio Ramón Sánchez Pizjuán-SEVILLA"/>
+      <input type="button" onclick="buttonClick(39.474531,-0.358066,84.5947,669.8728963136045,60.84543083184953,57.9843)" value="Estadio de Mestalla-VALENCIA CF"/>
+      <input type="button" onclick="buttonClick(40.391930,-3.658887,97.0602,243.1431068574123,144.1625422900115,45)" value="Estadio del Rayo Vallecano"/>
+     </td>
+    </tr>
+  </table>
+   </body>
+</html>
