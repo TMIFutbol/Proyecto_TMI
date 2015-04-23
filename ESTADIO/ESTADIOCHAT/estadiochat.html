@@ -173,6 +173,116 @@ return networkLink;
       <td>      <img src="http://cde.peru21.pe/ima/0/0/2/7/2/272474.jpg" onmouseover="this.src='http://www.pasionlibertadores.com/__export/1405971953000/sites/pasionlibertadores/img/2014/07/21/10-equipos-valiosos-mundo1.jpg_787813774.jpg';" onmouseout="this.src='http://cde.peru21.pe/ima/0/0/2/7/2/272474.jpg';"/>
         <center>
           <p>
+          <style>
+#hcr {
+position:fixed;
+top:60px;
+z-index:+1000;
+}
+* html #hcr {position:relative;}
+.hcrtab {
+height:100px;
+width:30px;
+float:left;
+cursor:pointer;
+background:url('http://2.bp.blogspot.com/-n6MFSSLcJ4w/T01qsipf6YI/AAAAAAAAGwM/dkqmUuQV4ZQ/s1600/ChatBox5.png') no-repeat;
+}
+.hcrcontent {
+float:left;
+border:2px solid #FF2E2E;
+background:#FFD0D0;
+padding:10px;
+}
+.hc-credit {font-size:9px}
+.hc-credit a {text-decoration:none}
+</style>
+<script type="text/javascript">
+function showHidehcr(){
+var hcr = document.getElementById("hcr");
+var w = hcr.offsetWidth;
+hcr.opened ? movehcr(0, 30-w) : movehcr(20-w, 0);
+hcr.opened = !hcr.opened;
+}
+function movehcr(x0, xf){
+var hcr = document.getElementById("hcr");
+var dx = Math.abs(x0-xf) > 10 ? 5 : 1;
+var dir = xf>x0 ? 1 : -1;
+var x = x0 + dx * dir;
+hcr.style.right = x.toString() + "px";
+if(x0!=xf){setTimeout("movehcr("+x+", "+xf+")", 10);}
+}
+</script>
+<div id="hcr">
+<div class="hcrtab" onclick="showHidehcr()"> </div>
+<div class="hcrcontent">
+
+<!-- CHAT BOX CODE HERE -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chatbot de Futbol</title>
+</head>
+
+<center>
+<table align="center">
+    <iframe width="30" height="30" name="vhost" src="http://www.pandorabots.com/pandora/talk-oddcast?botid=e00ff5d1fe34d180&skin=ivhost" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+<table width='85px' cellspacing='6' align="right">
+  <tr><td width="100">&nbsp;</td>
+</td>
+</tr>
+</center>
+</table>
+<table align="center" bgcolor="#FFFFFF">
+
+<center>
+
+<iframe  width="620" height="350" name="input" src="http://www.pandorabots.com/pandora/talk?botid=e00ff5d1fe34d180" frameborder="1"></iframe>
+
+</td>
+</tr>
+</center>
+</table>
+</body>
+</html>
+<!-- END CHAT BOX CODE --->
+
+
+<br />
+<div class="hc-credit">
+<span style="float:left">
+<a href="http://bloggeameblogger.blogspot.com/2012/02/caja-de-chat-en-forma-flotante-para-tu.html" target="_blank">
+[?]
+</a>
+</span>
+<span style="float:right">
+<a href="javascript:showHidehcr()">
+[Cerrar]
+</a>
+</span>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+var hcr = document.getElementById("hcr");
+hcr.style.right = (30-hcr.offsetWidth).toString() + "px";
+</script>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=6756021128688737735&widgetType=HTML&widgetId=HTML7&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML7"));' target='configHTML7' title='Editar'>
+
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div></div>
+</div>
+<div class='clear'></div>
+</div>
+<div class='clear'></div>
+</div>
           <form method="get" action="chatbot.html">
 <input type="submit" value="Hablemos de Futbol Español" />
 </form><p>&nbsp;</p>
